@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Registration Form</title>
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+    <div class="box">
+        <form name="form" action="registration.php" method="POST">
+            <h2>Registration</h2>
+            <div class="inputbox">
+                <label for="name">Rector Name</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="inputbox">
+                <label for="password">Enter Password</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</body>
+</html>

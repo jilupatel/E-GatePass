@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <!-- <link rel="stylesheet" href="scanner.css"> -->
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+</head>
+<body>
+    <style>
+        body{
+            background-image: url(securityImage.webp);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-size: 100% 100%;
+        }
+        .button{
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            margin: 200px 200px 200px 200px;
+            margin-left: 290px;
+            transition: background-color 0.3s ease, transform 0.3s ease;            
+        }
+        
+    </style>
+    <h1>QR Code Scanner</h1>
+
+    <!-- Scanner Section -->
+    <h2>Scanner</h2>
+    <video id="scannerVideo"></video>
+    <button id="scanBtn" class="button">Scan QR Code</button>
+    <div id="scanResult"></div>
+    <button id="doneBtn" style="display: none;">Done</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let scanner = new Instascan.Scanner({ video: document.getElementById('scannerVideo') });
+
+            // Load previously scanned QR codes from localStorage
+            let scannedCodes = new Set(JSON.parse(localStorage.getItem('scannedCodes')) || []);
+
+            scanner.addListener('scan', function(content) {
+                if (!scannedCodes.has(content)) {
+                    scannedCodes.add(content);
+                    localStorage.setItem('scannedCodes', JSON.stringify(Array.from(scannedCodes)));
+                    document.getElementById('scanResult').innerText = 'Scanned Content: ' + content;
+                    document.getElementById('doneBtn').style.display = 'block';
+                    document.getElementById('doneBtn').onclick = function() {
+                        // Redirect to another page with the scanned content
+                        window.location.href = 'scandata.php?qrData=' + encodeURIComponent(content);
+                    };
+                    // Stop scanning
+                    scanner.stop();
+                    document.getElementById('scanBtn').disabled = false;
+                } else {
+                    alert('This QR code has already been scanned.');
+                }
+            });
+
+            document.getElementById('scanBtn').addEventListener('click', function() {
+                Instascan.Camera.getCameras().then(function(cameras) {
+                    if (cameras.length > 0) {
+                        scanner.start(cameras[0]);
+                        document.getElementById('scanBtn').disabled = true; // Disable scan button during scanning
+                    } else {
+                        alert('No cameras found.');
+                    }
+                }).catch(function(e) {
+                    console.error(e);
+                    alert('Failed to access camera.');
+                });
+            });
+
+            // Clear scanned QR codes when leaving the page
+            window.addEventListener('beforeunload', function() {
+                localStorage.removeItem('scannedCodes');
+            });
+        });
+    </script>
+</body>
+</html>

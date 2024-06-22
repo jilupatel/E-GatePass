@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pass.css">
+    <title>Student Gatepass</title>
+</head>
+<body>
+    <div class="login-container">
+    <h1>Student Gatepass</h1>
+    <form action="pass.php" method="post">
+    
+        <div class="input-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        </div>
+
+        <!-- <div class="input-group">
+            <label for="resion">Resion for leave</label>
+            <input type="text" id="resion" name="resion" required><br><br>
+        </div> -->
+
+        <div class="input-group">
+            <label for="reason">Reason for leave:</label><br>
+            <textarea type="text" id="reason" name="reason" rows="4" cols="50" required ></textarea><br><br>
+        </div>
+       
+        <div class="input-group">
+        <label for="room no">Room no:</label>
+        <input type="number" id="room_no" name="room_no" required><br><br>
+        </div>
+
+        <div class="input-group">
+        <label for="Block Name">Block Name</label>
+        <input type="text" id="block_name" name="block_name" required><br><br>
+        </div>
+
+        <div class="input-group">
+            <label for="Visit Place/City">Visit Place/City</label>
+            <input type="text" id="visit_place" name="visit_place" required><br><br>
+        </div>
+
+        <div class="input-group">
+            <label for="Date of Leaving">Date of Leaving</label>
+            <input type="date" id="date_leave" name="date_leave" required><br><br>
+        </div>
+
+        <div class="input-group">
+            <label for="Out Time">Out Time</label>
+            <input type="time" id="out_time" name="out_time" required><br><br>
+        </div>
+
+        <div class="input-group">
+            <label for="Date of Returning">Date of Returning</label>
+            <input type="date" id="date_return" name="date_return" required><br><br>
+        </div>
+
+        <div class="input-group">
+            <label for="No of leave">No of leave</label>
+            <input type="number" id="no_leave" name="no_leave" required><br><br>
+        </div>
+
+        <div class="input-group">
+            <label for="Student M.No">Student M.No</label>
+            <input type="number" id="student_mno" name="student_mno" required><br><br>
+        </div>
+
+        <div class="input-group">
+            <label for="Course">course</label>
+            <input type="text" id="course" name="course" required><br><br>
+        </div>
+
+        <!-- <div class="input-group">
+            <label for="Parent's M.No">Parent's M.No</label>
+            <input type="number" id="parent_mno" name="parent_mno" required><br><br>
+        </div> -->
+
+        <!-- <div>
+            Social <input type="checkbox" name="reason" id="">
+            financial<input type="checkbox" name="reason" id="">
+            personal<input type="checkbox" name="reason" id="">
+            Economical<input type="checkbox" name="reason" id="">
+            Migration<input type="checkbox" name="reason" id="">
+            Other<input type="checkbox" name="reason" id="" onclick="ReasonShow()"> -->
+            <!-- <div>
+                <p >Other</p>
+            </div> -->
+        <!-- </div> -->
+        
+        <!-- <div class="input-group" id="textBox" style="display: none;">
+            <label for="feedback" id="ressonTextBox" onmouseover="ReasonShow()">Reason:</label><br>
+            <textarea type="text" id="feedback" name="feedback" rows="4" cols="50" required ></textarea><br><br>
+        </div> -->
+
+        <div class="input-group">
+            <label for="password">Rector Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+<!-- <script>
+
+    const ReasonShow = () =>{
+        document.getElementById("textBox").style.display = 'block'
+    }
+</script> -->
+</body>
+</html>
